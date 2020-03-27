@@ -86,7 +86,7 @@ var words = ["Acne","Acre","Addendum","Advertise","Aircraft","Aisle","Alligator"
 		$("#tablegrid").css("border-color",""+firstColor+"");	
     }
 	
-	$( "td" ).click(function() { 
+	$(document).on('click','td', function() {
 		var team = $(this).attr("team");
 		if (team == firstColor){
 			$(this).css("background-color",""+firstColor+"");
