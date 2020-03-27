@@ -1,0 +1,9 @@
+td {width:85px;height:85px;border:5px;border-style:solid;text-align:center;font-weight:bold;}
+			div {colot:#FFF;font-weight:bold;padding-left: 20px;}
+			.grid {border-width:15px;border-style: solid; margin:20px;}
+			.button {margin:20px;}
+			.first-color{background-color:#F00;}
+			.second-color{background-color:#00F;}
+			.default-color td {background-color:#FFF;}
+			.neutral-color {background-color:#B0ADAD;}
+			.assassign-color {background-color:#7CFC00;}
