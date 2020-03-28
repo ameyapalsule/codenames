@@ -139,11 +139,15 @@
 			
 			// game over
 			if(firstTeam.turn)
-				alert(secondTeam.name + " WINS");
-			else
-				alert(firstTeam.name + " WINS"); 	
+				$(".data-row").html("<div class='center "+secondClass+"'>"+secondTeam.name+" Win !!</div>");				
+			else 
+				$(".data-row").html("<div class='center "+firstClass+"'>"+firstTeam.name+" Win !!</div>");
 			
-			refreshPage();
+			
+			// Change to spy view to see all colors
+			if (!$( "#tablegrid" ).hasClass( "spy" ))
+				changeView();			
+			
 		}	
 		
 		$(this).removeClass("default-color");
@@ -197,15 +201,32 @@ function endTurn(){
 	firstTeam.turn = !firstTeam.turn;
 }
 
+			// game over
+			if(firstTeam.turn)
+				$(".data-row").html("<div class='center "+secondClass+"'>"+secondTeam.name+" Win !!</div>");				
+			else 
+				$(".data-row").html("<div class='center "+firstClass+"'>"+firstTeam.name+" Win !!</div>");
+			
+			
+			// Change to spy view to see all colors
+			if (!$( "#tablegrid" ).hasClass( "spy" ))
+				changeView();	
+
+
+
 function updateScore () { 
 	$("#team1score").text(firstTeam.score).css("color",""+firstColor+"");
 	$("#team2score").text(secondTeam.score).css("color",""+secondColor+"");
+	// team wins and show spy view
 	if(!firstTeam.score){				
-		alert(firstTeam.name + " WINS"); 	
-		refreshPage();
-	}
-	else if(!secondTeam.score){
-		alert(secondTeam.name + " WINS");
-		refreshPage();
-	}		
+		$(".data-row").html("<div class='center "+firstClass+"'>"+firstTeam.name+" Win !!</div>");		
+		changeView();		
+	} else if(!secondTeam.score){
+		$(".data-row").html("<div class='center "+secondClass+"'>"+secondTeam.name+" Win !!</div>");
+		changeView();	
+	}	
+	
+	
+	
+	
 }
