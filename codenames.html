@@ -11,53 +11,55 @@
 	</style>
 </head>
 <body>
-	<div class = "container">
-		<button class="button" id="grid-generate" onclick="refreshPage()" >Start a New Game</button><BR><BR>
-		<div class="data-row"><span id="team1score"></span> - <span id="team2score"></span><span class="team-turn" id="teamturn"></span><button class = "end-turn" 		id="endturn" onclick="endTurn()"></button>
-		</div> 
-                <table class ="grid" id="tablegrid">
-                    <tbody>
-                        <tr>
-                            <td id="1"></td>
-                            <td id="2"></td>
-                            <td id="3"></td>
-                            <td id="4"></td>
-                            <td id="5"></td>
-                        </tr>
-                        <tr>
-                            <td id="6"></td>
-                            <td id="7"></td>
-                            <td id="8"></td>
-                            <td id="9"></td>
-                            <td id="10"></td>
-                        </tr>
-                        <tr>
-                            <td id="11"></td>
-                            <td id="12"></td>
-                            <td id="13"></td>
-                            <td id="14"></td>
-                            <td id="15"></td>
-                        </tr>
-                        <tr>
-                            <td id="16"></td>
-                            <td id="17"></td>
-                            <td id="18"></td>
-                            <td id="19"></td>
-                            <td id="20"></td>
-                        </tr>
-                        <tr>
-                            <td id="21"></td>
-                            <td id="22"></td>
-                            <td id="23"></td>
-                            <td id="24"></td>
-                            <td id="25"></td>
-                        </tr>
-                    </tbody>
-                </table> 		
-		<div class="data-row"><span  id="view-type">Player View</span>				
-			<button class="end-turn" id="toggle-view" onclick="changeView()" >Change to Spy Master</button>
+	<div>
+		<div class = "container">
+			<button class="button" id="grid-generate" onclick="createGrid()" >Start a New Game</button><BR><BR>
+			<div class="data-row"><span id="team1score"></span> - <span id="team2score"></span><span class="team-turn" id="teamturn"></span><button class = "end-turn" 		id="endturn" onclick="endTurn()"></button>
+			</div> 
+					<table class ="grid" id="tablegrid">
+						<tbody>
+							<tr>
+								<td id="1"></td>
+								<td id="2"></td>
+								<td id="3"></td>
+								<td id="4"></td>
+								<td id="5"></td>
+							</tr>
+							<tr>
+								<td id="6"></td>
+								<td id="7"></td>
+								<td id="8"></td>
+								<td id="9"></td>
+								<td id="10"></td>
+							</tr>
+							<tr>
+								<td id="11"></td>
+								<td id="12"></td>
+								<td id="13"></td>
+								<td id="14"></td>
+								<td id="15"></td>
+							</tr>
+							<tr>
+								<td id="16"></td>
+								<td id="17"></td>
+								<td id="18"></td>
+								<td id="19"></td>
+								<td id="20"></td>
+							</tr>
+							<tr>
+								<td id="21"></td>
+								<td id="22"></td>
+								<td id="23"></td>
+								<td id="24"></td>
+								<td id="25"></td>
+							</tr>
+						</tbody>
+					</table> 		
+			<div class="data-row"><span  id="view-type">Player View</span>				
+				<button class="end-turn" id="toggle-view" onclick="changeView()" >Change to Spy Master</button>
+			</div>
 		</div>
-	
+		
 		<div class="rules">
 			<h1>Game Overview</h1><p>Spymasters know the secret identities of 25 agents. Their teammates know the agents only by their
 				codenames.Spymasters take turns giving one-word clues. A clue may relate to multiple words on the table. The field
@@ -75,8 +77,8 @@
 				should see the key. Don't let the field operatives see it.The key corresponds to the grid on the table. Blue squares correspond to words that Blue Team must
 				guess (blue agents). Red squares correspond to words that Red Team must guess (red agents). Pale
 				squares are innocent bystanders, and the black square is an assassin who should never be contacted at all!</p>
+		</div>	
 	</div>
-</div>
 
 <script type="text/javascript">
     createGrid();
