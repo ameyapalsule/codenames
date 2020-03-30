@@ -85,7 +85,7 @@
                 else {
              //       $(`#${random}`).css("background-color","grey");
 					$(`#${random}`).addClass("assassign-color");
-					$(`#${random}`).text(assassign);
+					$(`#${random}`).text(assassign.toUpperCase());
 					$(`#${random}`).attr("team","assassign-color");
                 }
                 cell_data.add(random)
