@@ -15,6 +15,9 @@
 		secondColor = "#00F";	
 		secondClass = "second-color";	
 		
+		neutralClass = "neutral-color";
+		assassignClass = "assassign-color";
+		
 		if (Math.round(Math.random())) { 
 			firstColor = "#00F";
 			firstClass = "second-color";
@@ -54,6 +57,7 @@
 		while (neutral.words.length < 7){
 			var newWord = wordsArray[Math.floor(Math.random()*wordsArray.length)];	
 			neutral.words.push(newWord.toUpperCase());	
+			removeItem(wordsArray,newWord);
 		}
 		
 		var assassign = wordsArray[Math.floor(Math.random()*wordsArray.length)];
@@ -78,13 +82,13 @@
                 }
 				else if (cell_count < 24){
                   //  $(`#${random}`).css("background-color",""+firstColor+"");
-				    $(`#${random}`).addClass("neutral-color");
+				    $(`#${random}`).addClass(neutralClass);
 					$(`#${random}`).text(neutral.words[cell_count-17]);
 					$(`#${random}`).attr("team","neutral-color");
                 }
                 else {
              //       $(`#${random}`).css("background-color","grey");
-					$(`#${random}`).addClass("assassign-color");
+					$(`#${random}`).addClass(assassignClass);
 					$(`#${random}`).text(assassign.toUpperCase());
 					$(`#${random}`).attr("team","assassign-color");
                 }
@@ -94,12 +98,13 @@
         }	
 			
 		// Set the border based on which team starts.
-		$("#tablegrid").css("border-color",""+firstColor+"");
-	/*	$("#3").css("border-top-color",""+firstColor+"");
-		$("#11").css("border-left-color",""+firstColor+"");
-		$("#15").css("border-right-color",""+firstColor+"");
-		$("#23")css("border-bottom-color",""+firstColor+"");
-*/
+		//$("#tablegrid").css("border-color",""+firstColor+"");
+		$("td").addClass("background");
+		$("#3").css("border-top-color",""+firstColor+"").css("border-top-width","10px");
+		$("#11").css("border-left-color",""+firstColor+"").css("border-left-width","10px");
+		$("#15").css("border-right-color",""+firstColor+"").css("border-right-width","10px");
+		$("#23").css("border-bottom-color",""+firstColor+"").css("border-bottom-width","10px");
+
 		// Set whos turn it is.
 		$("#teamturn").text(firstTeam.name + " Turn");
 		$("#endturn").text("End " + firstTeam.name + " Turn");
@@ -109,10 +114,13 @@
 	
 	$(document).on('click','td', function() { 	
 		var team = $(this).attr("team");
+		$(this).css("background","");
 		if (team == firstColor){
 			$(this).css("background-color",""+firstColor+"");
 			//$(this).addClass("first-color");
-			$(this).removeClass("default-color");
+			$(this).removeClass("background");
+			$(this).removeClass(firstClass);
+			$(this).attr("clicked",true);
 			firstTeam.score--;
 			updateScore();
 			if(!firstTeam.turn)				
@@ -122,7 +130,9 @@
 		else if (team == secondColor){
 			$(this).css("background-color",""+secondColor+"");
 			//$(this).addClass("second-color");
-			$(this).removeClass("default-color");
+			$(this).removeClass("background");
+			$(this).removeClass(secondClass);
+			$(this).attr("clicked",true);
 			secondTeam.score--;
 			updateScore();
 			if(firstTeam.turn)			    
@@ -133,12 +143,15 @@
 		else if	(team == "neutral-color"){
 			$(this).css("background-color","#B0ADAD");
 			//$(this).addClass("neutral-color");
-			$(this).removeClass("default-color");
+			$(this).removeClass("background");
+			$(this).removeClass(neutralClass);
+			$(this).attr("clicked",true);
 			// If neutral is hit then end turn
 			endTurn();
 		}
 		else {
 			$(this).css("background-color","#7CFC00");
+			$("td").removeClass(assassignClass);
 			//$(this).addClass("assassign-color");
 			
 			// game over
@@ -174,12 +187,18 @@ function removeItem(array, item){
 function changeView(){
 	if ($( "#tablegrid" ).hasClass( "spy" )){
 		$( "#tablegrid" ).removeClass( "spy" );
-		$( "#tablegrid" ).addClass( "default-color" );		
+		$( "#tablegrid" ).addClass( "default-color" );	
+		$('#tablegrid td').each(function() {
+			if(!$(this).attr("clicked"))
+				$(this).addClass("background");	
+		});	
+//		$("td").addClass("background");		
 		$("#toggle-view").text("Change to Spy Master");
 		$("#view-type").text("Player View");
 	} else {
 		$( "#tablegrid" ).addClass( "spy" );
 		$( "#tablegrid" ).removeClass( "default-color" );
+		$("td").removeClass("background");
 		$("#toggle-view").text("Change to Player");
 		$("#view-type").text("Spy Master View");
 		
@@ -225,8 +244,10 @@ function updateScore () {
 function printKey () {
 	var mywindow = window.open('', 'PRINT', 'height=400,width=600');
 
-    mywindow.document.write('<html><head><title>SPy Master</title>');
-    mywindow.document.write('</head><style>table { width: 100%;}td {  width:10%;height:70px;  border: 5px solid black;  position: relative;  text-align: center;  font-weight:bold;}div {font-weight:bold;padding-left:20px;}.container{width:40%;float:left;}.grid {border-width:15px;border-style: solid; margin:20px;}.button{margin-left:20px;}.first-color{background-color:#F00;}.second-color{background-color:#00F;}.default-color td {background-color:#FFF;}.neutral-color {background-color:#B0ADAD;}.assassign-color {background-color:#7CFC00;}.end-turn{float:right;}.team-turn{text-align:center;margin-left:35%;color:#FFF;font-weight:bold;padding: 5px;}.data-row{margin-right:-20px;}.center{text-align:center;color:#FFF;font-weight:bold;padding: 5px;}.rules {margin-left:50%;width:40%;}</style><body><table>');    mywindow.document.write('<h1>Spy Master</h1>');
+    mywindow.document.write('<html><head><title>Spy Master</title>');
+	mywindow.document.write('</head><style>table { width: 100%;}td {width:20%;height:90px;border: 2px solid;position: relative;text-align: center;font-weight:bold; border-radius:15px;padding:0px 5px;}div {font-weight:bold;padding-left:20px;}button {border-radius:5px;text-decoration: none; font-weight:bold; background:#000; color:white; padding: 5px 5px;border: 1px solid; border-radius: 4px;}.container{width:40%;float:left;}.grid{border-width:0px;border-style: solid1; margin:20px;}.button{margin-left:20px;}.first-color{background-color:#F00;}.second-color{background-color:#00F;}.default-color td{background-color:#FFF;}.neutral-color {background-color:#B0ADAD;}.assassign-color {background-color:#7CFC00;}</style><body><table>'); 
+	
+	mywindow.document.write('<h1>Spy Master</h1>');
     mywindow.document.write($('table').html());
     mywindow.document.write('<table></body></html>');
 
