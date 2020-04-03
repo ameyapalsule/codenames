@@ -11,7 +11,7 @@
 	</style>
 </head>
 <body class="background">
-	<div>
+	<div >
 		<div class = "container">
 			<button class="button" id="grid-generate" onclick="createGrid()" >Start a New Game</button><BR><BR>
 			<div class="data-row"><span id="team1score"></span> - <span id="team2score"></span><span class="team-turn" id="teamturn"></span><button class = "end-turn" 		id="endturn" onclick="endTurn()"></button>
@@ -60,26 +60,21 @@
 					<button id="toggle-view" onclick="changeView()" >Change to Spy Master</button>
 					<button onclick="printKey()">Print Key</button>
 				</span>
-			</div>
+			</div>	
 		</div>
 		
 		<div class="rules">
 			<h1>Game Overview</h1><p>Spymasters know the secret identities of 25 agents. Their teammates know the agents only by their
 				codenames.Spymasters take turns giving one-word clues. A clue may relate to multiple words on the table. The field
-				operatives try to guess which words their spymaster meant. When a field operative touches a word, the
-				spymaster reveals its secret identity. If the field operatives guess correctly, they may continue guessing,
+				operatives try to guess which words their spymaster meant. When a field operative clicks on a word, the
+				its secret identity is revealed. If the field operatives guess correctly, they may continue guessing,
 				until they run out of ideas for the given clue or until they hit a wrong person. Then it is the other team's
-				turn to give a clue and guess. The first team to contact all their agents wins the game</p>
-			<h1>Set Up</h1><p>Players split up into two teams of similar
-				size and skill.Each team chooses one player to be
-				their spymaster. Both spymasters sit on
-				the same side of the table and they should be the only one who can see the game key. The other
-				players sit across from their spymasters.
-				They are field operatives</p>
+				turn to give a clue and guess. The first team to contact all their agents wins the game.</p>
+			<h1>Set Up</h1><p>Players split up into two teams of similar size and skill.Each team chooses one player to be
+				their spymaster. Both spymasters sit on the same side of the table and they should be the only one who can see the game key. The other
+				players sit across from their spymasters.They are field operatives</p>
 			<h1>The Key for Spy-Masters</h1><p>Clicking on "Change to spymaster" reveals the secret key and identities of the cards on the table. Only the spymasters
-				should see the key. Don't let the field operatives see it.The key corresponds to the grid on the table. Blue squares correspond to words that Blue Team must
-				guess (blue agents). Red squares correspond to words that Red Team must guess (red agents). Pale
-				squares are innocent bystanders, and the black square is an assassin who should never be contacted at all!</p>
+				should see the key. Don't let the field operatives see it.The key corresponds to the grid on the table. <span class="second-color">Blue Square</span> correspond to words that Blue Team must guess (blue agents). <span class="first-color">Red Square</span> correspond to words that Red Team must guess (red agents). <span class="neutral-color">Grey Squares</span> are innocent bystanders, and the <span class="assassign-color">Green square</span> is an assassin who should never be contacted at all!</p>
 		</div>	
 	</div>
 
