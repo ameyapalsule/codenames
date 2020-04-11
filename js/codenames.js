@@ -76,6 +76,7 @@
 					$(`#${random}`).addClass(secondClass);
 					$(`#${random}`).text(secondTeam.words[cell_count]); 
 					$(`#${random}`).attr("team",secondColor);
+					$(this).attr("clicked",false);
 					
                 }
                 else if (cell_count < 17){
@@ -83,18 +84,21 @@
 					$(`#${random}`).addClass(firstClass);
 					$(`#${random}`).text(firstTeam.words[cell_count-8]);
 					$(`#${random}`).attr("team",firstColor);
+					$(this).attr("clicked",false);
                 }
 				else if (cell_count < 24){
                   //  $(`#${random}`).css("background-color",""+firstColor+"");
 				    $(`#${random}`).addClass(neutralClass);
 					$(`#${random}`).text(neutral.words[cell_count-17]);
 					$(`#${random}`).attr("team","neutral-color");
+					$(this).attr("clicked",false);
                 }
                 else {
              //       $(`#${random}`).css("background-color","grey");
 					$(`#${random}`).addClass(assassignClass);
 					$(`#${random}`).text(assassign.toUpperCase());
 					$(`#${random}`).attr("team","assassign-color");
+					
                 }
                 cell_data.add(random)
                 cell_count++;
@@ -118,6 +122,8 @@
 	
 	$(document).on('click','td', function() { 	
 		var team = $(this).attr("team");
+	if(!$(this).attr("clicked")) {	
+		
 		$(this).css("background","");
 		if (team == firstColor){
 			$(this).css("background-color",""+firstColor+"");
@@ -126,7 +132,8 @@
 			$(this).removeClass(firstClass);
 			$(this).attr("clicked",true);
 			firstTeam.score--;
-			updateScore();
+			
+				updateScore();
 			if(!firstTeam.turn)				
 				endTurn();
 			
@@ -174,7 +181,7 @@
 		$(this).removeClass("default-color");
 		$(this).css("color","#FFF");
 		$(this).css("font-weight","bold");
-		
+	}	
 
 	});
 
