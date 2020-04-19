@@ -43,7 +43,7 @@
 		}
 			
 		while (firstTeam.words.length < 9){
-			var newWord = wordsArray[Math.floor(Math.random()*wordsArray.length)];		
+			var newWord = wordsArray[Math.floor(Math.random()*wordsArray.length)];			
 			if(firstTeam.words.indexOf(newWord) == -1)
 				firstTeam.words.push(newWord.toUpperCase());
 			
@@ -52,13 +52,14 @@
 		
 		while (secondTeam.words.length < 8){
 			var newWord = wordsArray[Math.floor(Math.random()*wordsArray.length)];		
-			if(secondTeam.words.indexOf(newWord) == -1)
+			if(secondTeam.words.indexOf(newWord) == -1 && firstTeam.words.indexOf(newWord) == -1)
 				secondTeam.words.push(newWord.toUpperCase());
 			removeItem(wordsArray,newWord);	
 		}
 		
 		while (neutral.words.length < 7){
 			var newWord = wordsArray[Math.floor(Math.random()*wordsArray.length)];
+			if(neutral.words.indexOf(newWord) == -1 && secondTeam.words.indexOf(newWord) == -1 && firstTeam.words.indexOf(newWord) == -1)
 			if(neutral.words.indexOf(newWord) == -1)
 				neutral.words.push(newWord.toUpperCase());	
 			removeItem(wordsArray,newWord);
