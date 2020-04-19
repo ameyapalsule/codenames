@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<?xml version="1.0" encoding="UTF-8" ?>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="XMLCCLREQUEST,APPLINK,MPAGES_EVENT,CCLLINK" name="discern"/>
+	
+	<link href="css/codenames.css" rel="stylesheet" />
+	<script src="js/jquery-1.9.1.js"></script>
+	<script src="js/codenames.js"></script>
+			
+	</style>
+</head>
+<body class="background">
+	<div >
+		<div class = "container">
+			<button class="button" id="grid-generate" onclick="createGrid()" >Start a New Game</button><BR><BR>
+			<div class="data-row"><span id="team1score"></span> - <span id="team2score"></span><span class="team-turn" id="teamturn"></span><button class = "end-turn" 		id="endturn" onclick="endTurn()"></button>
+			</div> 
+					<table class ="grid" id="tablegrid">
+						<tbody>
+							<tr>
+								<td id="1"></td>
+								<td id="2"></td>
+								<td id="3"></td>
+								<td id="4"></td>
+								<td id="5"></td>
+							</tr>
+							<tr>
+								<td id="6"></td>
+								<td id="7"></td>
+								<td id="8"></td>
+								<td id="9"></td>
+								<td id="10"></td>
+							</tr>
+							<tr>
+								<td id="11"></td>
+								<td id="12"></td>
+								<td id="13"></td>
+								<td id="14"></td>
+								<td id="15"></td>
+							</tr>
+							<tr>
+								<td id="16"></td>
+								<td id="17"></td>
+								<td id="18"></td>
+								<td id="19"></td>
+								<td id="20"></td>
+							</tr>
+							<tr>
+								<td id="21"></td>
+								<td id="22"></td>
+								<td id="23"></td>
+								<td id="24"></td>
+								<td id="25"></td>
+							</tr>
+						</tbody>
+					</table> 		
+			<div class="data-row"><span  id="view-type">Player View</span>				
+				<span class="end-turn">
+					<button id="toggle-view" onclick="changeView()" >Change to Spy Master</button>
+					<button onclick="printKey()">Print Key</button>
+				</span>
+			</div>	
+		</div>
+		
+		<div class="rules">
+			<h2>Game Overview</h2><p>Spymasters know the secret identities of 25 agents. Their teammates know the agents only by their codenames. Spymasters take turns giving one-word clues. A clue may relate to multiple words on the table. The field operatives try to guess which words their spymaster meant. Clicking on a word reveals its secret identity. If the field operatives guess correctly, they may continue guessing, until they run out of ideas for the given clue or until they guess incorrecty. The teams are required to make atleast one guess,if they guess correctly, they can continue or end their turn to play safe. If the assassin is pointed out, the game ends immediately, with the team who identified him losing. If an agent of the other team is pointed out, the turn ends immediately, and that other team is also one agent closer to winning. If an innocent bystander is pointed out, the turn simply ends. Then it is the other team's turn to give a clue and guess. The first team to contact all their agents wins the game.</p>
+			<h2>Set Up</h2><p>Players split up into two teams of similar size and skill (Blue team and Red Team). You need atleast 4 people to play this game. Each team chooses one player to be their spymaster. Both spymasters sit on the same side of the table and they should be the only one who can see the game key. The other players sit across from their spymasters. They are field operatives. Team guessing 9 agents will start first, this is indicated by the border colors of the board. The score at top left indicates the remaining field agent each team still needs to guess.</p>
+			<h2>The Key for Spy-Masters</h2><p>Clicking on "Change to spymaster" reveals the secret key and identities of the cards on the table. Only the spymasters
+				should see the key. Don't let the field operatives see it. The key corresponds to the grid on the table. <span class="second-color">Blue Square</span> correspond to words that Blue Team must guess (blue agents). <span class="first-color">Red Square</span> correspond to words that Red Team must guess (red agents). <span class="neutral-color">Grey Squares</span> are innocent bystanders, and the <span class="assassign-color">Green square</span> is an assassin who should never be contacted at all!. If you are in a screen share mode, clicking on "Print Key" opens the key in a new window so other players viewing your shared screen do not see the key. Only a spymaster shoud share the screen, spy-masters of both teams should share the key map so they know which are their agents.</p>
+		</div>
+	</div>
+
+<script type="text/javascript">
+    createGrid();
+</script>
+</body>
+</html>
